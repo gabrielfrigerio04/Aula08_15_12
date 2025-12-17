@@ -39,7 +39,7 @@ async def responder_mensagem(update: Update,
     resposta = conversar_com_chatbot(pergunta)
     await update.message.reply_text(resposta)
 
-def main() -> None:
+def iniciar_bot() -> None:
     # Criar a aplicação do bot
     application = ApplicationBuilder().token(
         TELEGRAM_BOT_TOKEN).build()
@@ -54,5 +54,16 @@ def main() -> None:
     # Iniciar o bot
     application.run_polling()
 
-if __name__ == "__main__":
-    main()
+def iniciar_streamlit() -> None:
+    st.set_page_config(page_title="Bot Online", layout="centered")
+    st.title("Telegram Bot Online")
+    st.success("O bot está rodando via polling.")
+    st.markdown("Este Web Service existe apenas para manter o bot ativo no Render Free. Fale com o Bot pelo Telegram.")
+
+
+# Iniciar o bot em uma thread separada
+if "bot_iniciado" not in st.session_state:
+    st.session_state.bot_iniciado = True
+    threading.Thread(target=iniciar_bot, daemon=True).start()
+
+iniciar_streamlit()
