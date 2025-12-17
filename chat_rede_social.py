@@ -10,8 +10,8 @@ from telegram.ext import (
     filters
 )
 
-os.environ["GROQ_API_KEY"] = ""
-TELEGRAM_BOT_TOKEN = ""
+os.environ["GROQ_API_KEY"] = "GROQ_API_KEY"
+TELEGRAM_BOT_TOKEN = "TELEGRAM_BOT_TOKEN"
 
 #Criar o modelo de IA Llama 3
 chat = ChatGroq(
