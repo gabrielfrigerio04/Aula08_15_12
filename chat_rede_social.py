@@ -62,8 +62,6 @@ def iniciar_streamlit() -> None:
     st.title("Telegram Bot Online")
     st.success("O bot está rodando via polling.")
     st.markdown("Este Web Service existe apenas para manter o bot ativo no Render Free. Fale com o Bot pelo Telegram.")
-
-
 # Iniciar o bot em uma thread separada
 if "bot_iniciado" not in st.session_state:
     st.session_state.bot_iniciado = True
